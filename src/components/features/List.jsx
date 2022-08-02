@@ -97,7 +97,7 @@ const List = (props) => {
                                                 &&
                                                     <Favorite value={ item } category={ categorykey } />
                                             }
-                                            <Link to={ '/categories/' + categorykey + '/' + (index + 1) } refs={ [ refBlock.current ] } onMouseEnter={ handleMouseEnter } onMouseLeave={ handleMouseLeave }>
+                                            <Link to={ '/categories/' + categorykey + '/' + (index + 1 + (((categorykey == 'people') && (index >= 16)) ? 1 : 0) ) } refs={ [ refBlock.current ] } onMouseEnter={ handleMouseEnter } onMouseLeave={ handleMouseLeave }>
                                                 <p className="title" data-descr={ item.title ?? item.name } data-image={ item.image ?? '' }>{ item.title ?? item.name }</p>
                                             </Link>
                                         </div>
