@@ -95,7 +95,7 @@ const Search = (props) => {
                             />
                         ) } />
                         <Controller name="itemkey" control={ control } render={ ({ field }) => (
-                            <Form.Control type="number" { ...field } className="input-search" />
+                            <Form.Control type="number" { ...field } min="1" className="input-search" placeholder="Index" />
                         ) } />
                         <Button variant="link" type="submit" disabled={ ((watch('categorykey') == null) || (watch('categorykey') == '')) }>Search</Button>
                     </div>

@@ -20,21 +20,18 @@ export const useApis = () => {
         return new Promise( (resolve, reject) => {
             const cachedData = cache.get(url);
             if (cachedData != null) {
-                //debugger;
                 resolve(cachedData);
             }
             else {
                 axios.get(url)
                     .then(
                         (response) => {
-                            //debugger;
                             cache.set(url, response.data);
                             resolve(response);
                         }
                     )
                     .catch(
                         (error) => {
-                            //debugger;
                             reject(Error("Promise rejected"));
                         }
                     );
@@ -57,7 +54,7 @@ export const useResources = () => {
             return Object.assign(original, { image : ('https://raw.githubusercontent.com/DiachenkoRoman/SW_Database_prj/master/img/' + path + '/' + ((key).split(' ')).join('') + '.jpg') });
         }
         else {
-            return (original ?? [  ]).map((item, index) => ( Object.assign(item, { image : ('https://raw.githubusercontent.com/DiachenkoRoman/SW_Database_prj/master/img/' + path + '/' + ((item[keyName] ?? item.name).split(' ')).join('') + '.jpg') } ) ) );
+            return (original ?? [  ]).map((item, index) => ( item.image == undefined ? Object.assign(item, { image : ('https://raw.githubusercontent.com/DiachenkoRoman/SW_Database_prj/master/img/' + path + '/' + ((item[keyName] ?? item.name).split(' ')).join('') + '.jpg') } ) : item ) );
         }
     };
 

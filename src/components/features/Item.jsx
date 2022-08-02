@@ -29,7 +29,18 @@ const Item = (props) => {
                 setTimeout(function() {
                     apis.get(('vehicles|starships').indexOf(categorykey) == -1 ? ('/' + categorykey + '/' + itemkey) : ('/' + categorykey)).then(
                         (result) => {
-                            let resultData = (('vehicles|starships').indexOf(categorykey) == -1 ) ? result.data : result.data.results[itemkey];
+                            let resultData = null;
+                            if (('vehicles|starships').indexOf(categorykey) == -1) {
+                                resultData = result.data;
+                            }
+                            else {
+                                if (result.data.results[parseInt(itemkey) - 1] != undefined) {
+                                    resultData = result.data.results[parseInt(itemkey) - 1];
+                                }
+                                else {
+                                    setError(true);
+                                }
+                            }
                             if (resources[categorykey] != null) {
                                 setItem(resources[categorykey](resultData, (resultData.title ?? resultData.name)));
                             }

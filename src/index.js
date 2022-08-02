@@ -18,3 +18,17 @@ root.render(
         </BrowserRouter>
     </React.StrictMode>
 );
+
+
+
+(function() {
+    window.onscroll = function () {
+        var topnavbar = document.getElementById('topnavbar');
+        if (document.body.scrollTop >= 160 || document.documentElement.scrollTop >= 160) {
+            topnavbar.classList.add('scroll');
+        }
+        else {
+            topnavbar.classList.remove('scroll');
+        }
+    };
+})(); 

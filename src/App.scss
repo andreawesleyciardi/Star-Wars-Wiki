@@ -248,13 +248,13 @@ html {
 			    		width:100vw; height:100vh; position:absolute; top:0px; left:0px; z-index:99999; transform:rotateX(70deg);
 			    		& > div {
 			    			width:100vw; height:100vh; position:relative; top:0px; left:0px; z-index:99999; transform:rotateX(70deg);
-			    			p { color:$primary; font-size:5rem; font-family:$font-family-scrollingtext; position:absolute; left:0%; opacity:0; animation:galaxyfaraway 3s; width:100%; text-align:center; }
+			    			p { color:$primary; font-size:5rem; font-family:$font-family-scrollingtext; position:absolute; left:0%; opacity:0; animation:crawl 4s linear; width:100%; text-align:center; }
 			    		}
 			    	}
 		    	}
 		    }
 
-		    @keyframes galaxyfaraway {
+		    @keyframes crawl {
 				0% {
 				  	top: 100vh;
 				  	transform:scale(1);
@@ -267,6 +267,46 @@ html {
 				  	top: 20%;
 				  	transform:scale(0.5);
 				  	opacity:0;
+				}
+			}
+
+			#loading-container-developer {
+	        	width:100vw; height:100vh; background-color:#000000; display:flex; align-items:center; justify-content:center; position:fixed; z-index:99;
+	        	#alongtimeago { font-size:4.5rem; font-weight:400; font-family:$font-family-scrollingtext; color:blue; margin:auto; animation:alongtimeago 5s linear; opacity:0; }
+	        	#profilephoto { width:0px; height:0px; border-radius:50%; animation:photoscale 3s linear 5500ms; position:absolute; left:50%; top:50%; transform:translateX(-50%) translateY(-50%); }
+	        }
+
+	        @keyframes alongtimeago {
+				0% {
+				  	opacity:0;
+				}
+				10% {
+				  	opacity:1;
+				}
+				90% {
+				  	opacity:1;
+				}
+				100% {
+				  	opacity:0;
+				}
+			}
+
+	        @keyframes photoscale {
+				0% {
+				  	opacity:0;
+				  	width:90vw;
+				  	height:90vw;
+				}
+				20% {
+				  	opacity:1;
+				}
+				90% {
+				  	opacity:1;
+				}
+				100% {
+				  	opacity:0;
+				  	width:0px;
+				  	height:0px;
 				}
 			}
 
@@ -340,7 +380,7 @@ html {
 	        }
 
 	        #search-popover {
-	        	background-color:#000000; color:#FFFFFF; box-shadow:0px 0px 1px 1px #888888;
+	        	background-color:#000000; color:#FFFFFF; box-shadow:0px 0px 1px 1px #888888; padding:1rem; border-radius:0px;
 	        	&.bs-popover-bottom > .popover-arrow::before,
 	        	&.bs-popover-auto[data-popper-placement^=bottom] > .popover-arrow::before { border-bottom-color:#888888; }
 	        	&.bs-popover-bottom > .popover-arrow::after,
@@ -356,6 +396,8 @@ html {
 	        	}
 	        }
 	        .search-container {
+	        	display:flex; align-items:center; gap:5px; height:2rem;
+	        	& > * { height:100%; }
 	        	.select-search {
 	        		width:8rem; color:#000000;
 	        		& > div[class*=-control] {
@@ -370,8 +412,8 @@ html {
 	        			div[class*=-option] { text-transform:capitalize; }
 	        		}
 	        	}
-	        	.input-search { width:6rem; }
-	        	button { border-radius:0px !important; color:#FFFFFF; padding:0.5rem 1rem; font-size:0.875rem; text-transform:uppercase; border:solid 1px #FFFFFF !important; box-shadow:0px 1px 2px rgba(0,0,0,0.5); text-shadow:0px 1px 2px rgba(0,0,0,0.5); }
+	        	.input-search { width:6rem; border-radius:0px; }
+	        	button { border-radius:0px !important; color:#FFFFFF; padding:auto 1rem; font-size:0.875rem; text-transform:uppercase; border:solid 1px #FFFFFF !important; box-shadow:0px 1px 2px rgba(0,0,0,0.5); text-shadow:0px 1px 2px rgba(0,0,0,0.5); }
 	        }
 
 	    #wrapper {
@@ -379,7 +421,7 @@ html {
 
 	        #topnavbar {
 	            width:100%; height:$topnavbar-height; position:fixed; top:0px; left:0px; z-index:999;
-	            &.scroll { background-color:rgba(0,0,0,0.7); -webkit-transition:background-color 1000ms linear; -ms-transition:background-color 1000ms linear; transition:background-color 1000ms linear; }
+	            &.scroll { background-color:rgba(0,0,0,0.8); -webkit-transition:background-color 500ms linear; -ms-transition:background-color 500ms linear; transition:background-color 500ms linear; }
 	            .navbar {
 	                width:100%; height:100%; padding:0.5rem 2rem; position:relative;
 	                .navbar-brand {
@@ -610,12 +652,19 @@ html {
 	            }
 
 	            #developer-feature {
-	                #profilephoto { max-width:12rem; padding:0.8rem; border-radius:50%; border:$border-style; }
-	                #profiledescription { text-align:center; font-style:italic; }
-	                #contacts-container {
-	                    display:inline-flex; align-items:start; flex-direction:column; padding-bottom:2rem; border-bottom:$border-style;
-	                }
-	            }
+			    	width:100vw; height:100vh; position:fixed; top:0px; left:0px; z-index:9;
+			    	& > div {
+			    		width:100vw; height:100vh; position:relative; margin:auto; perspective:600px; perspective-origin:top;
+			    		& > div {
+				    		width:100vw; height:100vh; position:absolute; top:0px; left:0px; z-index:99999; transform:rotateX(70deg); overflow:scroll;
+				    		& > div {
+				    			width:100vw; min-height:100vh; padding-top:0px; padding-bottom:150vh; position:relative; top:0px; left:0px; z-index:99999; transform:rotateX(70deg); display:flex; align-items:center; justify-content:center; flex-direction:column;
+				    			p { width:100%; padding:0px 3%; text-align:center; color:$primary; font-size:5rem; font-family:$font-family-scrollingtext; margin-bottom:4rem; /*animation:crawl 3s linear infinite;*/ }
+				    		}
+				    	}
+			    	}
+			    	#scroll-label { position:fixed; top:3rem; left:50%; transform:translateX(-50%); }
+			    }
 	        }
 
 	        #footer {
