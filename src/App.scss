@@ -668,7 +668,7 @@ html {
 	        }
 
 	        #footer {
-	            width:100%; height:$footer-height; position:absolute; bottom:0px; padding:20px 2rem 0.5rem 2rem; display:flex; align-items:center; justify-content:space-between; font-size:70%;
+	            width:100%; height:$footer-height; position:absolute; bottom:0px; padding:20px 2rem 0.5rem 2rem; display:flex; align-items:center; justify-content:space-between; font-size:70%; z-index:999;
 	            a {
 	            	text-transform:none;
 	                &:hover { color:$primary; }
